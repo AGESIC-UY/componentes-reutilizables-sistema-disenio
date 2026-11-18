@@ -1,0 +1,234 @@
+@use "../tokens" as *;
+@use "icons" as *;
+
+:root {
+	--tag-padding-y: var(--espaciado-2);
+	--tag-padding-x: var(--espaciado-12);
+	--tag-radius: var(--borde-radio-full);
+
+	//badge
+	--btn-badge-point-size: var(--espaciado-12); // En figma es 10!
+	--btn-badge-tag-size: var(--espaciado-24);
+	--btn-badge-border: var(--borde-grosor-1) solid var(--neutro-0);
+}
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--espaciado-8);
+	width: fit-content;
+
+	padding: var(--tag-padding-y) var(--tag-padding-x);
+	background: var(--neutro-50);
+	font-family: var(--tipo-familia-base);
+	font-weight: var(--tipo-peso-regular);
+	color: var(--texto-principal);
+	border-radius: var(--tag-radius);
+
+	// Variantes tamaño
+	&.tag--l {
+		font-size: var(--tipo-tamano-parrafo-l);
+		line-height: var(--tipo-altura-linea-m);
+
+		.icono {
+			@include icon-size(s);
+		}
+	}
+
+	&.tag--m {
+		font-size: var(--tipo-tamano-parrafo-m);
+		line-height: var(--tipo-altura-linea-m);
+
+		.icono {
+			@include icon-size(xs);
+		}
+	}
+
+	&.tag--s {
+		font-size: var(--tipo-tamano-parrafo-s);
+		line-height: var(--tipo-altura-linea-m);
+
+		.icono {
+			@include icon-size(xs);
+		}
+	}
+
+	// Variantes de clasificación (categóricas, sin significado funcional)
+	// El texto siempre usa el color principal (--texto-principal, heredado
+	// de la regla base .tag); solo cambia el fondo según la familia.
+	&.tag--rojo {
+		background: var(--clasificacion-rojo-claro);
+	}
+
+	&.tag--naranja {
+		background: var(--clasificacion-naranja-claro);
+	}
+
+	&.tag--amarillo {
+		background: var(--clasificacion-amarillo-claro);
+	}
+
+	&.tag--verde {
+		background: var(--clasificacion-verde-claro);
+	}
+
+	&.tag--verde-agua {
+		background: var(--clasificacion-verde-agua-claro);
+	}
+
+	&.tag--celeste {
+		background: var(--clasificacion-celeste-claro);
+	}
+
+	&.tag--fucsia {
+		background: var(--clasificacion-fucsia-claro);
+	}
+
+	&.tag--violeta {
+		background: var(--clasificacion-violeta-claro);
+	}
+
+	// Variantes estados
+	&.tag--inactivo {
+		background: var(--funcional-informacion-claro);
+		color: var(--funcional-informacion-oscuro);
+
+		.dot {
+			background: var(--funcional-informacion-acento);
+		}
+	}
+
+	&.tag--activo {
+		background: var(--funcional-exito-claro);
+		color: var(--funcional-exito-oscuro);
+
+		.dot {
+			background: var(--funcional-exito-acento);
+		}
+	}
+
+	&.tag--error {
+		background: var(--funcional-error-claro);
+		color: var(--funcional-error-oscuro);
+
+		.dot {
+			background: var(--funcional-error-acento);
+		}
+	}
+
+	&.tag--advertencia {
+		background: var(--funcional-advertencia-claro);
+		color: var(--funcional-advertencia-oscuro);
+
+		.dot {
+			background: var(--funcional-advertencia-acento);
+		}
+	}
+
+	// Variantes de transmisión en vivo
+	&.tag--en-vivo,
+	&.tag--en-vivo-inactivo {
+		font-weight: var(--tipo-peso-bold);
+		border-radius: var(--borde-radio-xs);
+		padding-left: var(--espaciado-8);
+		padding-right: var(--espaciado-8);
+	}
+
+	&.tag--en-vivo {
+		background: var(--funcional-error-claro);
+
+		.dot {
+			width: 10px;
+			height: 10px;
+			background: var(--funcional-error-acento);
+			animation: tag-en-vivo-parpadeo 1.5s ease-in-out infinite;
+		}
+	}
+
+	&.tag--en-vivo-inactivo {
+		background: var(--neutro-50);
+	}
+
+	&.tag--indicador {
+
+		position: absolute;
+		right: var(--espaciado-0);
+		top: var(--espaciado-0);
+		padding: var(--espaciado-0);
+		margin: calc(var(--btn-badge-point-size) / -2) calc(var(--btn-badge-point-size) / -2) 0 0;
+		background-color: transparent;
+		width: var(--btn-badge-point-size);
+		height: var(--btn-badge-point-size);
+		overflow: unset;
+		z-index: var(--z-badge);
+		color: var(--texto-principal);
+		clip: unset;
+
+		.dot {
+			width: var(--btn-badge-point-size);
+			height: var(--btn-badge-point-size);
+			border: var(--btn-badge-border);
+		}
+
+		&--numerico {
+
+			width: fit-content;
+			min-width: var(--btn-badge-tag-size);
+			height: var(--btn-badge-tag-size);
+			margin-top: calc(var(--btn-badge-tag-size) / -2);
+			margin-right: var(--espaciado-0);
+			transform: translateX(50%);
+
+			>span {
+
+				font-size: var(--tipo-tamano-parrafo-s);
+				border-radius: var(--borde-radio-m);
+				padding: var(--espaciado-4);
+				line-height: var(--tipo-altura-linea-1);
+				border: var(--btn-badge-border);
+				min-width: var(--btn-badge-tag-size);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+			}
+
+			&.tag--advertencia {
+
+				>span {
+
+					background: var(--funcional-advertencia-acento);
+
+				}
+
+
+			}
+
+		}
+
+	}
+
+}
+
+.dot {
+	display: inline-flex;
+	height: 8px;
+	width: 8px;
+	background: var(--neutro-400);
+	border-radius: 100%;
+}
+
+@keyframes tag-en-vivo-parpadeo {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.3;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tag--en-vivo .dot {
+		animation: none;
+	}
+}

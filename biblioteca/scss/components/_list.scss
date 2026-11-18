@@ -1,0 +1,25 @@
+@use "../tokens" as *;
+
+.lista {
+	li {
+		margin-top: var(--espaciado-8);
+
+		&:first-child {
+			margin-top: var(--espaciado-0);
+		}
+
+		ul,
+		ol {
+			margin-top: var(--espaciado-4);
+			padding-top: var(--espaciado-2);
+
+			li {
+				margin-top: var(--espaciado-4);
+
+				&:first-child {
+					margin-top: var(--espaciado-0);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+@use "primitives" as *;
+@use "tools" as *;
+
+// Variables de tipografía
+
+:root {
+
+    --tipo-familia-base: #{$open-sans};
+    --tipo-familia-marca: #{$sora};
+
+    --tipo-peso-light: #{$tipo-peso-light};
+    --tipo-peso-regular: #{$tipo-peso-regular};
+    --tipo-peso-medium: #{$tipo-peso-medium};
+    --tipo-peso-semibold: #{$tipo-peso-semibold};
+    --tipo-peso-bold: #{$tipo-peso-bold};
+    --tipo-peso-extrabold: #{$tipo-peso-bold};
+
+    --tipo-tamano-titulo-xxl: #{$tipo-tamano-titulo-xxl};
+    --tipo-tamano-titulo-xl: #{$tipo-tamano-titulo-xl};
+    --tipo-tamano-titulo-l: #{$tipo-tamano-titulo-l};
+    --tipo-tamano-titulo-m: #{$tipo-tamano-titulo-m};
+    --tipo-tamano-titulo-s: #{$tipo-tamano-titulo-s};
+    --tipo-tamano-titulo-xs: #{$tipo-tamano-titulo-xs};
+
+    --tipo-tamano-parrafo-xl: #{$tipo-tamano-parrafo-xl};
+    --tipo-tamano-parrafo-l: #{$tipo-tamano-parrafo-l};
+    --tipo-tamano-parrafo-m: #{$tipo-tamano-parrafo-m};
+    --tipo-tamano-parrafo-s: #{$tipo-tamano-parrafo-s};
+    --tipo-tamano-parrafo-xs: #{$tipo-tamano-parrafo-xs};
+    --tipo-tamano-parrafo-xxs: #{$tipo-tamano-parrafo-xxs};
+
+    --tipo-altura-linea-xl: #{$tipo-altura-linea-160};
+    --tipo-altura-linea-l: #{$tipo-altura-linea-150};
+    --tipo-altura-linea-m: #{$tipo-altura-linea-140};
+    --tipo-altura-linea-s: #{$tipo-altura-linea-130};
+    --tipo-altura-linea-xs: #{$tipo-altura-linea-120};
+    --tipo-altura-linea-xxs: #{$tipo-altura-linea-110};
+    --tipo-altura-linea-1: #{$tipo-altura-linea-100};
+
+    // Espaciado semántico de títulos (usado por base/typography y components/titles)
+    --heading-spacing-xl: var(--espaciado-36);
+    --heading-spacing-l:  var(--espaciado-32);
+    --heading-spacing-m:  var(--espaciado-24);
+    --heading-spacing-s:  var(--espaciado-20);
+    --heading-spacing-xs: var(--espaciado-16);
+
+    // Espaciado semántico de párrafos (usado por base/typography y components/paragraphs)
+    --parrafo-spacing-xl: var(--espaciado-24);
+    --parrafo-spacing-l:  var(--espaciado-20);
+    --parrafo-spacing-m:  var(--espaciado-16);
+    --parrafo-spacing-s:  var(--espaciado-12);
+    --parrafo-spacing-xs: var(--espaciado-8);
+
+}
+
+// Tamaños de título en mobile. --xs no cambia. Afecta por igual a los
+// h1-h6 nativos (base/typography) y a las clases .titulo--* (components/
+// titles) — ambos ya consumen estas mismas variables.
+@include media(sm, down) {
+    :root {
+        --tipo-tamano-titulo-xxl: 2rem;
+        --tipo-tamano-titulo-xl: 1.75rem;
+        --tipo-tamano-titulo-l: 1.5rem;
+        --tipo-tamano-titulo-m: 1.25rem;
+        --tipo-tamano-titulo-s: 1.125rem;
+    }
+}

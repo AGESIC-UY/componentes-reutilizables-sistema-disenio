@@ -1,0 +1,198 @@
+@use "../tokens" as *;
+@use "icons" as *;
+
+.boton {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	gap: var(--btn-gap);
+	vertical-align: middle;
+	padding: var(--espaciado-8) 20px;
+	min-height: 42px;
+	border: 1px solid transparent;
+	border-radius: var(--btn-radius);
+	font: inherit;
+	font-family: var(--tipo-familia-base);
+	font-weight: var(--tipo-peso-semibold);
+	line-height: var(--tipo-altura-linea-l);
+	cursor: pointer;
+	box-shadow: var(--btn-shadow);
+	transition: background-color 0.2s ease, transform 0.1s ease;
+
+	.icono:not(.icono--iniciales) {
+		@include icon-size(s);
+		flex-shrink: 0;
+
+		&:first-child {
+			margin-left: -2px;
+		}
+
+		&:last-child {
+			margin-right: -2px;
+		}
+	}
+
+	&.boton--icono {
+		.icono {
+			margin: 0 !important;
+		}
+	}
+
+	>span:not(.icono) {
+		flex: 1;
+		display: flex;
+	}
+
+	/* Por tipo de boton */
+	&.boton--primario {
+		--btn-bg-hover: var(--color-primary-hover);
+		background-color: var(--btn-color-primary);
+		color: var(--color-primary-text);
+
+		&:hover:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&[aria-expanded="true"] {
+			background-color: var(--color-primary-hover);
+		}
+	}
+
+	&.boton--secundario {
+		--btn-bg-hover: var(--color-primary-hover);
+		background-color: var(--neutro-0);
+		border-color: var(--btn-color-primary);
+		color: var(--btn-color-primary);
+
+		&:hover:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&[aria-expanded="true"] {
+			background-color: var(--color-primary-hover);
+			color: var(--color-primary-text);
+		}
+	}
+
+
+
+	&.boton--enlace {
+		--btn-bg-hover: var(--color-secondary-hover);
+		color: var(--btn-color-primary);
+		box-shadow: none;
+		background: transparent;
+		text-decoration: underline;
+
+		text-decoration-thickness: .0625rem !important;
+		text-underline-offset: .1625em;
+
+		// Ajustes de alineación del tag - El resto de los atributos asociados a los tag están en el archivo _tags.scss
+
+		.tag {
+
+			&.tag--indicador {
+				/**/
+				margin: calc(var(--btn-padding-y) - calc(var(--btn-badge-point-size) / 2)) calc(var(--btn-padding-x) - calc(var(--btn-badge-point-size) / 2)) 0 0;
+				transform: translateX(75%);
+
+				&--numerico {
+					margin: calc(var(--btn-padding-y) - calc(var(--btn-badge-tag-size) / 2)) var(--btn-padding-x) 0 0;
+					transform: translateX(75%);
+				}
+			}
+		}
+
+		&:hover:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&[aria-expanded="true"] {
+			background-color: var(--color-secondary-hover);
+			text-decoration: none;
+		}
+	}
+
+	&.boton--icono {
+		padding: var(--btn-padding-y) var(--btn-padding-y);
+		aspect-ratio: 1;
+
+		>span:not(.tag--indicador):not(.icono) {
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+			clip: rect(0, 0, 0, 0);
+			border: 0;
+		}
+	}
+
+
+	// boton icono + boton enlace	
+
+	&.boton--icono.boton--enlace {
+
+		// Ajustes de alineación del tag - El resto de los atributos asociados a los tag están en el archivo _tags.scss
+		.tag {
+			&.tag--indicador {
+				margin: calc(var(--btn-badge-point-size) / 3) var(--btn-badge-point-size) 0 0;
+
+				&--numerico {
+					margin-top: calc(var(--btn-badge-tag-size) / -4);
+
+				}
+			}
+		}
+	}
+
+	/* Por estados */
+	&:disabled {
+		box-shadow: none;
+		cursor: not-allowed;
+		opacity: .4;
+	}
+
+	&:active:not(:disabled),
+	&[aria-expanded="true"] {
+		background-color: var(--btn-bg-hover, transparent);
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+
+		.icono.down {
+			transform: rotate(180deg);
+			transition: transform 0.2s ease;
+		}
+	}
+
+	&:active:not(:disabled) {
+		transform: scale(0.98);
+	}
+
+	/* Por tamaño */
+	&.boton--l {
+		font-size: var(--tipo-tamano-parrafo-l);
+		line-height: var(--tipo-altura-linea-m);
+		min-height: 43px;
+
+		&:not(.boton--icono) {
+			padding: var(--espaciado-8) var(--espaciado-24);
+		}
+
+		.icono {
+			@include icon-size(m);
+		}
+	}
+
+	&.boton--m .icono {
+		@include icon-size(s);
+	}
+
+	&.boton--s {
+		font-size: var(--tipo-tamano-parrafo-s);
+		min-height: 39px;
+
+		&:not(.boton--icono) {
+			padding: var(--espaciado-8) var(--espaciado-16);
+		}
+
+		.icono {
+			@include icon-size(xs);
+		}
+	}
+}

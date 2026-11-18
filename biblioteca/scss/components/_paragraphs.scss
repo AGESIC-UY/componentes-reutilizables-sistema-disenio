@@ -1,0 +1,53 @@
+@use "../tokens" as *;
+
+p {
+
+  font-family: var(--tipo-familia-base);
+  font-weight: var(--tipo-peso-regular);
+  color: inherit;
+  font-size: var(--tipo-tamano-parrafo-m);
+  margin: 0 0 var(--parrafo-spacing-m);
+}
+
+.parrafo {
+
+  &--xl {
+
+    font-size: var(--tipo-tamano-parrafo-xl);
+    line-height: var(--tipo-altura-linea-m);
+    margin: 0 0 var(--parrafo-spacing-xl);
+
+  }
+
+  &--lg {
+
+    font-size: var(--tipo-tamano-parrafo-l);
+    line-height: var(--tipo-altura-linea-m);
+    margin: 0 0 var(--parrafo-spacing-l);
+
+  }
+
+  &--md {
+
+    font-size: var(--tipo-tamano-parrafo-m);
+    line-height: var(--tipo-altura-linea-l);
+    margin: 0 0 var(--parrafo-spacing-m);
+
+  }
+
+  &--sm {
+
+    font-size: var(--tipo-tamano-parrafo-s);
+    line-height: var(--tipo-altura-linea-m);
+    margin: 0 0 var(--parrafo-spacing-s);
+
+  }
+
+  &--xs {
+
+    font-size: var(--tipo-tamano-parrafo-xs);
+    line-height: var(--tipo-altura-linea-s);
+    margin: 0 0 var(--parrafo-spacing-xs);
+
+  }
+}
