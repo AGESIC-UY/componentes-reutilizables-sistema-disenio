@@ -2,7 +2,7 @@
 
 Biblioteca de tokens, estilos (SCSS/CSS), íconos y componentes del Sistema de Diseño del Estado uruguayo.
 
-**Portal de documentación:** [sistemadiseño.agesic.gub.uy](https://sistemadiseño.agesic.gub.uy)
+**Portal de documentación:** [sistemadiseno.agesic.gub.uy](https://sistemadiseno.agesic.gub.uy)
 
 ## Qué incluye
 
